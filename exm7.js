@@ -48,7 +48,15 @@ app.post("/log",(req,res)=>{
                 res.send("invalid username or password")
             }
         }) //end of connections
-}) //end of login validation
+}) //end of login validation method
+app.get("/api/session-user",(res,req)=>{
+    if(!req.session.user){return res.status(401).json({loggedIn:false})
+    } // if condition
+    res.json({
+        loggedIn:true,username:req.session.user.username,
+        id:req.session.user.userid,
+    })
+})
 app.get("/logout",(req,res)=>{
     req.session.destroy(()=>res.redirect("/user"))
 }) // end of logout

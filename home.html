@@ -6,7 +6,18 @@
     <title>Homepage</title>
 </head>
 <body>
-    <p style="text-align: right; color: blue; font-weight: bold;" ><span>Username: </span> <a href="logout">Signout</a></p>
+    <p style="text-align: right; color: blue; font-weight: bold;" >Username:<span id="user" style="font-size: 20; color: goldenrod; text-decoration: underline;"> </span> <a href="logout">Signout</a></p>
     <H1 style="text-align: center; color: skyblue;">Welcome to the Homepage</H1>
+    <script>
+        fetch("/api/session-user").then(res =>{
+            if(!res.ok) throw "Not Logged In"
+        })
+        .then(data =>{
+            document.getElementById("user").innerText=data.username;
+        })
+        // .catch(()=>{
+        //     window.location.href="/home";
+        // });
+    </script>
 </body>
 </html>
