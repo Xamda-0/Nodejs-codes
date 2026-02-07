@@ -12,22 +12,41 @@ let conn=my.createConnection({
     password:"",
     database:"evoting"
 });
+
 app.use(session({
     secret:"exm7",
     resave:false,
     saveUninitialized:false,
     cookie:{secure:false,httpOnly:true}
-})
-);
-app.get("/log",(req,res)=>{
+}));
+
+app.get("/user",(req,res)=>{
     res.sendFile(path.join(__dirname,"login.html"));
-    let user=req.body.txt1
+})
+
+app.get("/home",(req,res)=>{
+    if(!req.session.user){
+        return res.redirect("/user")
+    }
+    res.sendFile(path.join(__dirname,"home.html"))
+})
+
+app.post("/log",(req,res)=>{
+      let user=req.body.txt1
     let pass=req.body.txt2
-    if(user=="admin" && pass=="1234"){
+    if(user=="xamdi" && pass=="1234"){
+        req.session.user={
+            userid:1,username:"xamdi",role:"admin"
+        }
         res.redirect("/home")
     }
     else{
         res.send("invalid username or password")
     }
+
 })
+app.get("/logout",(req,res)=>{
+    req.session.destroy(()=>res.redirect("/user"))
+})
+
 app.listen(3000)
