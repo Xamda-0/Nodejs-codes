@@ -1,9 +1,10 @@
 let express=require("express");
 let path=require("path");
+
 let my=require("mysql2");
 let session=require("express-session");
 let app=express();
-// app.use(express.static(path.join(__dirname,"form1.html")));
+app.use(express.static("public"));
 app.use(express.urlencoded({extended:false}));
 let conn=my.createConnection({
     host:"localhost",
@@ -19,6 +20,14 @@ app.use(session({
 })
 );
 app.get("/log",(req,res)=>{
-
+    res.sendFile(path.join(__dirname,"login.html"));
+    let user=req.body.txt1
+    let pass=req.body.txt2
+    if(user=="admin" && pass=="1234"){
+        res.redirect("/home")
+    }
+    else{
+        res.send("invalid username or password")
+    }
 })
 app.listen(3000)
