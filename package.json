@@ -16,5 +16,14 @@
     "multer": "^2.0.2",
     "mysql2": "^3.16.3"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xamda-0/Nodejs-codes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Xamda-0/Nodejs-codes/issues"
+  },
+  "homepage": "https://github.com/Xamda-0/Nodejs-codes#readme"
 }
