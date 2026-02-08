@@ -1,30 +1,27 @@
-<<<<<<< HEAD
-let ht=require("http")
-let express=require("express")
-let path=require("path")
-app = express()
-app.use(express.static("public"))
-app.get("/example4", (req,res)=>{
-    res.sendFile(path.join(__dirname,"form1.html"))
-})
-
-app.get("people",(req,res)=>{
-    res.send(`waan ku salaamay <b> ${req.query.txt1} </b> and your tell is <b> ${req.query.txt2}</b>`)
-}).listen(3000)
-// app.post("people",(req,res)=>{
-//     lnames=req.body.txt1
-//     tellphone=req.body.txt2
-//     res.sendFile(`waan ku salaamay<b> ${lnames}</b>, number-kaada waa <b>${tellphone}</b>`)
-
+// let ht=require("http")
+// let express=require("express")
+// let path=require("path")
+// app = express()
+// app.use(express.static("public"))
+// app.get("/example4", (req,res)=>{
+//     res.sendFile(path.join(__dirname,"form1.html"))
 // })
 
+// app.get("people",(req,res)=>{
+//     res.send(`waan ku salaamay <b> ${req.query.txt1} </b> and your tell is <b> ${req.query.txt2}</b>`)
+// }).listen(3000)
+// // app.post("people",(req,res)=>{
+// //     lnames=req.body.txt1
+// //     tellphone=req.body.txt2
+// //     res.sendFile(`waan ku salaamay<b> ${lnames}</b>, number-kaada waa <b>${tellphone}</b>`)
+
+// // })
 
 
 
 
 
 
-=======
 let ht=require("http")
 let express=require("express")
 let path=require("path")
@@ -44,5 +41,4 @@ app.get("/process",(req,res)=>{
 
 
 
->>>>>>> 01a36c8a138e8be3749938617fbb1b75b388c8e9
 // cl
