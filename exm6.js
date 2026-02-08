@@ -35,7 +35,7 @@ app.post("/tables",(req,res)=>{
     conn.query(sql,(err,result,col)=>{
         if(err){
             console.log(err)
-            return res.status(500).sendFile("failed to read")
+            return res.status(500).send("Failed to read")
         }
         res.send(result)
     })
