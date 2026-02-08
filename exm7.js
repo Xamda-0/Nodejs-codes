@@ -49,8 +49,9 @@ app.post("/log",(req,res)=>{
             }
         }) //end of connections
 }) //end of login validation method
-app.get("/api/session-user",(res,req)=>{
-    if(!req.session.user){return res.status(401).json({loggedIn:false})
+app.get("/api/session-user",(req,res)=>{
+    if(!req.session.user)
+        {return res.status(401).json({loggedIn:false})
     } // if condition
     res.json({
         loggedIn:true,username:req.session.user.username,
