@@ -11,6 +11,7 @@
     <script>
         fetch("/api/session-user").then(res =>{
             if(!res.ok) throw "Not Logged In"
+            return res.json();
         })
         .then(data =>{
             document.getElementById("user").innerText=data.username;
