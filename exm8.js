@@ -24,12 +24,27 @@ const storage=multer.diskStorage({
 })
 const upload=multer({storage:storage});
 app.post("/upload2",upload.single("txtfile"),(req,res)=>{
-    res.send(`uploaded successfully ${req.file.filename}`)
+    let sql="insert into images(image) values(?)";
+    let data=[req.file.filename]
+    conn.query(sql,data,(err,result)=>{
+        if(err) return res.status(500).send("DB error")
+        res.send(`inserted success`)
+    })
+    // res.send(`uploaded successfully ${req.file.filename}`)
 }) 
 app.get("/upload3",(req,res)=>{
-    let array=["hmp.jpg","fn.jpg","fclty.jpg"]
-    let txt=""
-    array.forEach((val)=>txt=`<img src='images/${val}' width='200' height='250' alt='sawir'><hr>`)
+    //reading with file
+    // let array=["hmp.jpg","fn.jpg","fclty.jpg"]
+    // let txt=""
+    // array.forEach((val)=>+=`<img src='images/${val}' width='200' height='250' alt='sawir'><hr>`)
+    // res.send(txt)
+    //reading with database
+    let sql="select * from images order by im_no desc limit 5";
+    conn.query(sql,(err,result)=>{
+        if(err) return res.status(500).send("db error")
+        let txt=""
+    result.forEach((val)=>txt+=`<img src='images/${val.image}' width='200' height='250' alt='sawir'><hr>`)
     res.send(txt)
+    })
 })
 app.listen(3000)
