@@ -25,12 +25,11 @@ const storage=multer.diskStorage({
 const upload=multer({storage:storage});
 app.post("/upload2",upload.single("txtfile"),(req,res)=>{
     res.send(`uploaded successfully ${req.file.filename}`)
-    // let name=req.body.name;
-    // let photo=req.file.originalname;
-    // let sql="insert into candidate(name,photo) values(?,?)";
-    // conn.query(sql,[name,photo],(err,result)=>{
-    //     if(err) throw err;
-    //     res.send("candidate added")
-    // })
+}) 
+app.get("/upload3",(req,res)=>{
+    let array=["hmp.jpg","fn.jpg","fclty.jpg"]
+    let txt=""
+    array.forEach((val)=>txt=`<img src='images/${val}' width='200' height='250' alt='sawir'><hr>`)
+    res.send(txt)
 })
 app.listen(3000)
