@@ -10,9 +10,8 @@ let conn = my.createConnection({
     password: "",
     database:  "staff_system"
 });
-app.get("/example6",(req,res)=>{
-    
-    res.sendFile(path.join(__dirname,"form1.html"))
+app.get("/tus",(req,res)=>{
+    res.sendFile(path.join(__dirname,  "form1.html"));
 })
 app.post("/people",(req,res)=>{
     let fullname=req.body.txt1

@@ -94,6 +94,8 @@
               </li>
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#base">
+                  <!-- <ul id="tableList" class="nav flex-column"></ul> -->
+
                   <i class="fas fa-layer-group"></i>
                   <p>Base</p>
                   <span class="caret"></span>
@@ -879,6 +881,28 @@
         lineColor: "#ffa534",
         fillColor: "rgba(255, 165, 52, .14)",
       });
+      
     </script>
+    <script>
+fetch("/api/tables")
+  .then(res => res.json())
+  .then(data => {
+    const ul = document.getElementById("tableList");
+
+    data.forEach(t => {
+      const li = document.createElement("li");
+      li.className = "nav-item";
+
+      li.innerHTML = `
+        <a class="nav-link" href="/dashboard/table/${t.table_name}">
+          ${t.table_name}
+        </a>
+      `;
+
+      ul.appendChild(li);
+    });
+  });
+</script>
+
   </body>
 </html>
